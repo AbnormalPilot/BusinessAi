@@ -1,145 +1,113 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { ArrowRight, PlayCircle, Star, TrendingUp } from "lucide-react";
+import { ShinyButton } from "@/components/ui/shiny-button"
+import { ArrowRight, Sparkles, Store } from "lucide-react"
+import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { BusinessChat } from "./business-chat"
+import Magnetic from "./magnetic"
+import { CircularHeroText } from "./circular-hero-text"
+import Image from "next/image"
 
-export default function HeroSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+export function HeroSection() {
+  const [isMounted, setIsMounted] = useState(false)
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  };
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) return null;
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gradient-to-b from-blue-50/50 to-white">
-      {/* Animated Background Blobs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 50, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-20 left-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl pointer-events-none"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.1, 1],
-          x: [0, -30, 0],
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-blue-200/30 rounded-full blur-3xl pointer-events-none"
-      />
-
-      <div className="container px-4 md:px-6 relative z-10">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+    <section className="relative w-full pt-32 sm:pt-40 pb-20 sm:pb-32 overflow-hidden">
+      {/* Aurora Background Layer */}
+      <div className="absolute inset-0 aurora-bg opacity-30 pointer-events-none z-0" />
+      
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full relative z-10">
+        {/* Left Column: Content - Extreme Left */}
+        <div className="flex flex-col items-start pl-0 lg:pl-0 relative min-h-[600px] justify-center">
+           {/* Badge - absolute or just above with some margin if needed, but 'extreme left' might imply image.
+               Let's give the badge some left margin so it's not cut off, but the image is extreme left. 
+           */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col space-y-6 lg:items-start text-center lg:text-left"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="absolute top-0 left-4 z-20 inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-white/40 backdrop-blur-md border border-white/20 rounded-full text-foreground/80 shadow-sm"
           >
-            <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-800 mx-auto lg:mx-0 shadow-sm hover:shadow-md transition-shadow">
-                <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span>
-                New: AI Growth Assistant
-              </div>
-            </motion.div>
-
-            <motion.h1 variants={itemVariants} className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl xl:text-7xl">
-              Powering Growth for India’s <span className="text-blue-600 inline-block">MSMEs</span>
-            </motion.h1>
-
-            <motion.p variants={itemVariants} className="max-w-[600px] text-lg text-slate-600 mx-auto lg:mx-0">
-              Smart tools to manage, automate, and scale your business — all in one platform.
-            </motion.p>
-
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 group shadow-lg shadow-blue-600/20">
-                  Get Started Free
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="group shadow-sm hover:shadow-md border-slate-200">
-                  <PlayCircle className="mr-2 h-4 w-4 text-slate-500 group-hover:text-blue-600" />
-                  See How It Works
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-500">
-               <div className="flex items-center gap-1">
-                 <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                 <span className="font-medium text-slate-700">4.9/5</span>
-                 <span>from 2,000+ businesses</span>
-               </div>
-            </motion.div>
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
+            <span>AI-Powered Business Intelligence</span>
           </motion.div>
-          
-          {/* Hero Video */}
+
+          {/* Animated Character - Extreme Left */}
           <motion.div
-             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-             transition={{ duration: 0.8, delay: 0.4 }}
-             className="relative mx-auto w-full max-w-[600px] lg:max-w-none"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }} 
+            className="w-full relative h-[450px] sm:h-[550px] lg:h-[700px] -ml-4 sm:-ml-8 lg:-ml-12 -mt-[0px] flex items-center justify-center" 
           >
-            <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl bg-slate-900 overflow-hidden shadow-2xl border border-white/60 group">
-               <video 
-                 src="/hero-video.mp4" 
-                 autoPlay 
-                 loop 
-                 muted 
-                 playsInline 
-                 className="w-full h-full object-cover"
-               />
-               
-               {/* Optional overlay for better text contrast if video is light, 
-                   or just a subtle gloss effect */}
-               <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none" />
-            </div>
-            
-            {/* Kept the floating growth badge as it complements the video nicely */}
-            <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -right-4 top-10 bg-white p-3 rounded-xl shadow-xl border border-slate-100 z-20"
-            >
-                <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                    <div className="text-xs text-slate-500">Weekly Growth</div>
-                    <div className="text-sm font-bold text-slate-900">+24.5%</div>
-                    </div>
-                </div>
-            </motion.div>
+             {/* Circular Text Background/Overlay */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 scale-[0.55] sm:scale-75 lg:scale-100 origin-center">
+                <CircularHeroText 
+                  text="AI TO REMOVE COMPLEXITY AND LET BUSINESSES FOCUS ON GROWTH" 
+                  radius={320} // Large radius to surround character
+                  className="text-primary/10" // Subtle text color? Or keep it bold? User said "hero text", likely visible.
+                />
+             </div>
+
+             {/* Dollar Sign Behind Character */}
+             <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none select-none"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1, y: [0, -20, 0] }}
+                transition={{ 
+                  opacity: { duration: 0.8, delay: 0.4 },
+                  scale: { duration: 0.8, delay: 0.4 },
+                  y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                }}
+             >
+                <span className="text-[200px] sm:text-[350px] leading-none font-bold bg-clip-text text-transparent bg-gradient-to-b from-yellow-300 via-amber-400 to-yellow-600 drop-shadow-lg animate-pulse">
+                  $
+                </span>
+             </motion.div>
+
+             <div className="absolute inset-y-0 left-[-125px] w-[120%] h-full z-10">
+                <Image
+                  src="/hero-character-v2.png"
+                  alt="Business Character"
+                  fill
+                  className="object-contain object-left drop-shadow-2xl"
+                  priority
+                />
+             </div>
           </motion.div>
+
         </div>
+
+        {/* Center Vertical Text - Desktop Only */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -mt-[10px] hidden lg:flex items-center justify-center pointer-events-none z-0">
+          <div className="-rotate-90 origin-center">
+            <h1 className="text-[100px] font-bold text-foreground/10 whitespace-nowrap tracking-widest uppercase select-none font-display">
+              BusinessAi
+            </h1>
+          </div>
+        </div>
+
+
+        {/* Right Column: Business Chat Demo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, x: 40, rotateY: 10 }}
+          animate={{ opacity: 1, scale: 1, x: 0, rotateY: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 w-full max-w-xl ml-auto mr-0 pr-[25px] lg:self-start lg:mt-[30px] perspective-1000"
+        >
+          <div className="relative group transition-all duration-500 hover:scale-[1.02] hover:-rotate-1">
+            {/* Subtle underglow */}
+            <div className="absolute -inset-8 bg-primary/20 blur-[60px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700 animate-pulse" />
+            <BusinessChat />
+          </div>
+        </motion.div>
       </div>
     </section>
-  );
+  )
 }

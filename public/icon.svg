@@ -1,0 +1,15 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @media (prefers-color-scheme: light) {
+      .background { fill: #0a0a0a; }
+      .mark { fill: white; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .background { fill: #fafafa; }
+      .mark { fill: #0a0a0a; }
+    }
+  </style>
+  <rect class="background" width="180" height="180" rx="40"/>
+  <path class="mark" d="M90 40L130 130H110L90 85L70 130H50L90 40Z"/>
+  <circle class="mark" cx="90" cy="130" r="8"/>
+</svg>
