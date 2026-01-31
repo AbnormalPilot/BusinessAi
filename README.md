@@ -43,7 +43,7 @@
 
 4. **Open in browser**
 
-   Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
+   Navigate to [https://business-ai-dusky.vercel.app/] to see the application.
 
 ### Available Scripts
 
