@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { Github } from "lucide-react"
 import Image from "next/image"
 import { ShinyButton } from "@/components/ui/shiny-button"
 import { motion, AnimatePresence } from "framer-motion"
@@ -190,6 +191,15 @@ export function Navigation({ isExpanded = false }: { isExpanded?: boolean }) {
                     {item}
                   </Link>
                ))}
+               <Link
+                  href="https://github.com/AbnormalPilot/SaturnX_msme_operations.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-lg font-medium text-foreground py-2"
+                >
+                  <Github className="w-5 h-5" />
+                  GitHub
+                </Link>
 
             </motion.div>
           )}
@@ -206,7 +216,14 @@ export function Navigation({ isExpanded = false }: { isExpanded?: boolean }) {
               transition={{ duration: 0.6, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
               className="hidden md:flex items-center gap-2"
             >
-
+              <Link
+                href="https://github.com/AbnormalPilot/SaturnX_msme_operations.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:bg-black/5 transition-colors"
+              >
+                <Github className="w-5 h-5 opacity-70 hover:opacity-100 transition-opacity" />
+              </Link>
             </motion.div>
           )}
         </AnimatePresence>
