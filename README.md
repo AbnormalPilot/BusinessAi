@@ -43,7 +43,7 @@
 
 4. **Open in browser**
 
-   Navigate to [https://business-ai-dusky.vercel.app/] to see the application.
+   Navigate to [https://business-ai-saturnx.vercel.app/] to see the application.
 
 ### Available Scripts
 
