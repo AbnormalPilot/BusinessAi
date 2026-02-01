@@ -63,7 +63,7 @@ export function Navigation({ isExpanded = false }: { isExpanded?: boolean }) {
               >
                 <div className="relative w-full h-full">
                   <Image 
-                    src="/logo-new.png" 
+                    src="/logo.png" 
                     alt="BusinessAi Logo" 
                     fill
                     className="object-cover scale-150"
@@ -190,14 +190,7 @@ export function Navigation({ isExpanded = false }: { isExpanded?: boolean }) {
                     {item}
                   </Link>
                ))}
-               <div className="flex flex-col gap-3 w-full px-8 mt-2">
-                  <ShinyButton variant="ghost" size="sm" className="w-full justify-center text-foreground/70 hover:text-primary">
-                    Sign in
-                  </ShinyButton>
-                  <ShinyButton size="sm" className="w-full justify-center">
-                    Get Started
-                  </ShinyButton>
-               </div>
+
             </motion.div>
           )}
         </AnimatePresence>
@@ -213,16 +206,7 @@ export function Navigation({ isExpanded = false }: { isExpanded?: boolean }) {
               transition={{ duration: 0.6, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
               className="hidden md:flex items-center gap-2"
             >
-              <Magnetic>
-                <ShinyButton variant="ghost" size="sm" className="hidden sm:inline-flex text-foreground/70 hover:text-primary">
-                  Sign in
-                </ShinyButton>
-              </Magnetic>
-              <Magnetic>
-                <ShinyButton size="sm">
-                  Get Started
-                </ShinyButton>
-              </Magnetic>
+
             </motion.div>
           )}
         </AnimatePresence>
